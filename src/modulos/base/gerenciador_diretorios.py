@@ -61,7 +61,14 @@ class GerenciadorDiretorios():
         for i, p in enumerate(path):    
             if (p == "." or (p == '' and i == (len(path)-1))):
                 continue
-
+            
+            if(p == ".."):
+                if(dir_atual.raiz == None):
+                    continue
+                
+                dir_atual = dir_atual.raiz
+                continue
+            
             encontrou_diretorio = False
             for dir in dir_atual.sub_diretorios:
                 if(dir.get_nome() == dir_atual.get_nome()):
@@ -70,7 +77,7 @@ class GerenciadorDiretorios():
 
             if(not encontrou_diretorio):
                 raise Exception("Diretorio invalido.")
-                
+
         return dir_atual
             
             

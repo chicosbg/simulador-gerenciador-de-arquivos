@@ -27,4 +27,3 @@ class TrataOperacoesCMD():
             return self.gerenciador_diretorios.caminha_para_diretorios(comando[1], diretorio_atual)
             
         raise Exception("comando invalido.")
-        
