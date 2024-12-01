@@ -22,6 +22,8 @@ class GerenciadorDiretorios():
             arquivos_diretorios_anterior = self.pesquisa_arquivo(dir, arquivo_pesquisado=arquivo_pesquisado, caminho_percorrido=caminho_percorrido) # vai até o final da arvore
             arquivos_diretorios.extend(arquivos_diretorios_anterior)
             
+        if(caminho_percorrido[-1] != raiz):
+            caminho_percorrido.pop() 
         
         for i,arquivo in enumerate(raiz.arquivos):
             if arquivo.nome == arquivo_pesquisado.nome:
@@ -31,4 +33,8 @@ class GerenciadorDiretorios():
         return arquivos_diretorios
     
     
-#
+    def lista_diretorio_atual(self, raiz: Diretorio):
+        diretorios_e_arquivos = []
+        diretorios_e_arquivos.extend(raiz.sub_diretorios)
+        diretorios_e_arquivos.extend(raiz.arquivos)
+        return diretorios_e_arquivos # retorna todos os diretorios e arquivos
