@@ -4,7 +4,7 @@ from tkinter import ttk
 
 class Display(): 
     def __init__(self) -> None:
-        self.root = Tk(screenName="Simulador", className="Simulador de gerenciamento de arquivos")
+        self.root = Tk(screenName="Simulador", className="gerenciador de arquivos")
         self.root.geometry("600x400")
     
     def set_text(self, text, col: int, row: int = 0, handler = None):    
@@ -35,7 +35,6 @@ def abre_diretorio(display: Display, column = 1, row = 0):
 
 if __name__ == "__main__":
     d = Display()
-    a = [0,1,2,3,4,5]
-    for i in a:
-        print(d.set_text(f"diretorio_{i}", 0, row=i, handler=lambda event, i=i: abre_diretorio(d, row=i)))
+    for i in range(5):
+        d.set_text(f"diretorio_{i}", 0, row=i, handler=lambda event, i=i: abre_diretorio(d, row=i))
     d.run()    
