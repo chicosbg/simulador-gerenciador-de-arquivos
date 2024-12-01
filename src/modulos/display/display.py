@@ -30,7 +30,8 @@ class Display():
         
 def abre_diretorio(display: Display, column = 1, row = 0):
     display.set_frame(60, column, row, "groove")
-    display.set_text(f"sub_diretorio{column-1}", col=column+1, row=row, handler=lambda x: abre_diretorio(display=display, column=column+2, row=row))
+    for i in range(row, row*10):
+        display.set_text(f"sub_diretorio{column-1}", col=column+1, row=i, handler=lambda x, i=i: abre_diretorio(display=display, column=column+2, row=i))
 
 
 if __name__ == "__main__":

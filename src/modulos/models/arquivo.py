@@ -1,5 +1,5 @@
 """
-    justificativa da encadeada: achei legal ;)
+    justificativa da encadeada: achei legal, mas o de indices parece mais interessante ;)
 """
 class Arquivo():
     def __init__(self) -> None:
