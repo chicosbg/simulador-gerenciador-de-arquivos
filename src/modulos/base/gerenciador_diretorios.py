@@ -38,3 +38,17 @@ class GerenciadorDiretorios():
         diretorios_e_arquivos.extend(raiz.sub_diretorios)
         diretorios_e_arquivos.extend(raiz.arquivos)
         return diretorios_e_arquivos # retorna todos os diretorios e arquivos
+    
+    def path_absoluto_diretorios_atual(self, diretorio_atual:Diretorio):
+        path = []
+        dir_atual = diretorio_atual
+        path.append(dir_atual)
+        while True:
+            if(dir_atual.raiz == None): break
+            dir_atual = dir_atual.raiz
+            
+            path.append(dir_atual)
+            
+        path.reverse()
+        path_str = '/'.join(p.nome for p in path)
+        return path_str

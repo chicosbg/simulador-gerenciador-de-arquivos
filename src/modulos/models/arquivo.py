@@ -1,3 +1,5 @@
+from datetime import datetime
+
 """
     justificativa da encadeada: achei legal, mas o de indices parece mais interessante ;)
 """
@@ -10,4 +12,5 @@ class Arquivo():
         self.metodo_acesso = "??"
         self.operacoes = "??"
         self.tamanho_bytes = 0
+        self.data_criacao = datetime.now()
         
