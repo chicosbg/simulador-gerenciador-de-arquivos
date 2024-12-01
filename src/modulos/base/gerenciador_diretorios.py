@@ -52,3 +52,31 @@ class GerenciadorDiretorios():
         path.reverse()
         path_str = '/'.join(p.nome for p in path)
         return path_str
+    
+    def caminha_para_diretorios(self, path: str, diretorio_atual: Diretorio) -> Diretorio:
+        path = path.split('/')
+
+        dir_atual = diretorio_atual
+        
+        for i, p in enumerate(path):    
+            if (p == "." or (p == '' and i == (len(path)-1))):
+                continue
+
+            encontrou_diretorio = False
+            for dir in dir_atual.sub_diretorios:
+                if(dir.get_nome() == dir_atual.get_nome()):
+                    dir_atual = dir
+                    encontrou_diretorio = True
+
+            if(not encontrou_diretorio):
+                raise Exception("Diretorio invalido.")
+                
+        return dir_atual
+            
+            
+                
+            
+            
+            
+        
+        
