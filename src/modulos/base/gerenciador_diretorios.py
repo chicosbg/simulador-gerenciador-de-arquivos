@@ -10,6 +10,8 @@ class GerenciadorDiretorios():
         novo_diretorio = Diretorio()
         novo_diretorio.nome = nome
         novo_diretorio.raiz = raiz
+        self.path_amibiente = "../ambiente/"
+        
         if(raiz):
             raiz.add_diretorio(diretorio=novo_diretorio)
         
@@ -80,7 +82,13 @@ class GerenciadorDiretorios():
 
         return dir_atual
             
-            
+    def cira_arvore_diretorio_por_path(self, path: str, raiz: Diretorio) -> Diretorio:
+        # buscar o primeiro diretorio
+        # verificar se ele existe caso exista entra nele
+        # caso não exista, cria diretorio
+        # repita isso para todos os paths
+        # TODO: fazer verificações para '.' e '..' 
+        pass             
                 
             
             

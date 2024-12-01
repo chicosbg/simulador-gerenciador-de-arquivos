@@ -27,3 +27,8 @@ class TratadorComandosCMD():
             return self.gerenciador_diretorios.caminha_para_diretorios(comando[1], diretorio_atual)
             
         raise Exception("comando invalido.")
+
+    def mkdir(self, comando: str, diretorio_atual: Diretorio) -> Diretorio:
+        comando = comando.split(' ') 
+        if(len(comando) == 2):
+            
