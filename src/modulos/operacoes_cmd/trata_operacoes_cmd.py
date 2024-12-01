@@ -3,7 +3,7 @@ from modulos.models.arquivo import Arquivo
 from modulos.diretorios.diretorio import Diretorio
 
 from typing import Union, List
-class TrataOperacoesCMD():
+class TratadorComandosCMD():
     def __init__(self) -> None:
         self.gerenciador_diretorios = GerenciadorDiretorios()
     
