@@ -4,6 +4,7 @@ from typing import List
 
 class GerenciadorDiretorios():
     def __init__(self) -> None:
+        self.path_amibiente = ""
         return 
     
     def cria_diretorios(self, nome, raiz: Diretorio|None = None):

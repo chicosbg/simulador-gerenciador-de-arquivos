@@ -1,8 +1,8 @@
 from modulos.base.gerenciador_diretorios import GerenciadorDiretorios
 from modulos.models.arquivo import Arquivo
 from modulos.diretorios.diretorio import Diretorio
-
 from typing import Union, List
+
 class TratadorComandosCMD():
     def __init__(self) -> None:
         self.gerenciador_diretorios = GerenciadorDiretorios()
@@ -31,4 +31,4 @@ class TratadorComandosCMD():
     def mkdir(self, comando: str, diretorio_atual: Diretorio) -> Diretorio:
         comando = comando.split(' ') 
         if(len(comando) == 2):
-            
+            pass

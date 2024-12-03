@@ -6,16 +6,16 @@ class SO():
         self.tratador_comandos = TratadorComandosCMD()
         
     def comando_cmd(self, comando: str):
-        comando = comando.split(' ')
-        if(comando[0].lower() == 'cd'):
+        comando_tratado = comando.split(' ')
+        if(comando_tratado[0].lower() == 'cd'):
             dir_atual = self.tratador_comandos.cd(comando, self.diretorios_atual)   
             self.diretorios_atual = dir_atual
         
-        if(comando[0].lower() == 'ls'):
+        if(comando_tratado[0].lower() == 'ls'):
             dirs = self.tratador_comandos.ls(comando, self.diretorios_atual)    
             for diretorio in dirs:
                 print(diretorio.nome) 
             
-        if(comando[0].lower() == 'pwd'):
+        if(comando_tratado[0].lower() == 'pwd'):
             print(self.tratador_comandos.pwd(comando, self.diretorios_atual))    
              

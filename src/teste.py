@@ -7,7 +7,6 @@ def change_text():
     for j,l in enumerate(labels):
         l.config(text=str(keys[j])+str(j))
 for key in keys:
-    # I can access the first variable created statically, but what about the others?
     labels.append(Label(window,text=key))
     labels[count].grid(row = count, column = 1)
     count += 1

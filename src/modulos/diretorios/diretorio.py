@@ -1,5 +1,6 @@
 from typing import List
 from modulos.models.arquivo import Arquivo
+
 class Diretorio(Arquivo):
     def __init__(self) -> None:
         self.sub_diretorios: List[Diretorio] = [] # uma lista de Diretorio
