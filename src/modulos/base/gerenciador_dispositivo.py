@@ -6,5 +6,6 @@ class GerenciadorDispositivo():
         
     def alocar(self):
         pass
+    
     def liberar(self):
         pass
