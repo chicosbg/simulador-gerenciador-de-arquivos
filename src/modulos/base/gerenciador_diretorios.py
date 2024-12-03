@@ -31,9 +31,7 @@ class GerenciadorDiretorios():
             if arquivo.nome == arquivo_pesquisado.nome:
                 arquivos_diretorios.append({"nome": arquivo.nome, "posicao_lista_arquivos":i, "caminho_percorrido": caminho_percorrido})
         
-        
         return arquivos_diretorios
-    
     
     def lista_diretorio_atual(self, raiz: Diretorio):
         diretorios_e_arquivos = []
@@ -82,16 +80,10 @@ class GerenciadorDiretorios():
 
         return dir_atual
             
-    def cira_arvore_diretorio_por_path(self, path: str, raiz: Diretorio) -> Diretorio:
+    def cria_arvore_diretorio_por_path(self, path: str, raiz: Diretorio) -> Diretorio:
         # buscar o primeiro diretorio
         # verificar se ele existe caso exista entra nele
         # caso não exista, cria diretorio
         # repita isso para todos os paths
         # TODO: fazer verificações para '.' e '..' 
-        pass             
-                
-            
-            
-            
-        
-        
+        pass
