@@ -3,7 +3,7 @@ from modulos.models.arquivo import Arquivo
 class Diretorio(Arquivo):
     def __init__(self) -> None:
         self.sub_diretorios: List[Diretorio] = [] # uma lista de Diretorio
-        self.raiz: Diretorio|None = None #se é None a classe em questão é a raiz, caso contrario passa a classe pai 
+        self.raiz: Diretorio|None = None # se é None a classe em questão é a raiz, caso contrario passa a classe pai 
         self.arquivos: List[Arquivo] = []
         
     def add_diretorio(self, diretorio):
