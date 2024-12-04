@@ -11,6 +11,6 @@ class Arquivo():
         self.tipo = "??"
         self.metodo_acesso = "??"
         self.operacoes = "??"
-        self.tamanho_bytes = 0
+        self.tamanho_blocos = 0
         self.data_criacao = datetime.now()
         

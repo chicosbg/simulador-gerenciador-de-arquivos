@@ -7,14 +7,23 @@ class GerenciadorDiretorios():
         self.path_amibiente = ""
         return 
     
+    def cria_arquivo(self, nome: str, tamanho_blocos: int, diretorio_atual: Diretorio):
+        novo_arquivo = Arquivo()
+        novo_arquivo.nome = nome
+        novo_arquivo.tamanho_blocos = tamanho_blocos
+        
+        diretorio_atual.add_arquivo(novo_arquivo)
+    
     def cria_diretorios(self, nome, raiz: Diretorio|None = None):
         novo_diretorio = Diretorio()
         novo_diretorio.nome = nome
         novo_diretorio.raiz = raiz
-        self.path_amibiente = "../ambiente/"
+        # self.path_amibiente = "../ambiente/"
         
         if(raiz):
             raiz.add_diretorio(diretorio=novo_diretorio)
+
+        return novo_diretorio
         
     def pesquisa_arquivo(self, raiz: Diretorio, arquivo_pesquisado: Arquivo, caminho_percorrido: List[Diretorio] = []):
         arquivos_diretorios = []

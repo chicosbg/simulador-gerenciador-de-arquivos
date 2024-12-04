@@ -31,4 +31,20 @@ class TratadorComandosCMD():
     def mkdir(self, comando: str, diretorio_atual: Diretorio) -> Diretorio:
         comando = comando.split(' ') 
         if(len(comando) == 2):
-            pass
+            nome_diretorio = comando[1].replace('\\', '/').split('/')
+            novo_diretorio = Diretorio()
+            novo_diretorio.set_nome(nome_diretorio)
+            diretorio_atual.add_diretorio(novo_diretorio)
+            return 
+        
+        raise Exception("comando invalido.")
+
+    def create(self, comando: str, diretorio_atual: Diretorio):
+        comando = comando.split(" ")
+        if(len(comando) == 3):
+            nome_arquivo = comando[1]
+            tamanho_em_blocos_arquivo = comando[2]
+            self.gerenciador_diretorios.cria_arquivo(nome_arquivo, tamanho_em_blocos_arquivo, diretorio_atual)
+        
+        raise Exception("comando invalido.")
+        
