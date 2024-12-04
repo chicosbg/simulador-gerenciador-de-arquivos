@@ -46,7 +46,7 @@ class InterfaceComando(cmd.Cmd):
         """
             Encerra
         """
-        return True
+        exit()
     
     def do_clear(self, line):
         """
