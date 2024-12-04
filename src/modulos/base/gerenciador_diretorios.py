@@ -69,7 +69,7 @@ class GerenciadorDiretorios():
     def caminha_para_diretorios(self, path: str|List[str], diretorio_atual: Diretorio) -> Diretorio:
         if(type(path) == str):
             path = path.split('/')
-        
+
         dir_atual = diretorio_atual
         
         for i, p in enumerate(path):    
@@ -93,11 +93,3 @@ class GerenciadorDiretorios():
                 raise Exception("Diretorio invalido.")
 
         return dir_atual
-            
-    def cria_arvore_diretorio_por_path(self, path: str, raiz: Diretorio) -> Diretorio:
-        # buscar o primeiro diretorio
-        # verificar se ele existe caso exista entra nele
-        # caso não exista, cria diretorio
-        # repita isso para todos os paths
-        # TODO: fazer verificações para '.' e '..' 
-        pass
