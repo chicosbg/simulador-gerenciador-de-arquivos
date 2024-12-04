@@ -15,6 +15,14 @@ class InterfaceComando(cmd.Cmd):
         self.comando = f"cd {line}"
         print(self.comando)
         return True
+    
+    def do_mkdir(self, line):
+        """ 
+            Cria Diretório
+        """
+        self.comando = f"mkdir {line}"
+        print(self.comando)
+        return True
 
     def do_ls(self, line):
         """

@@ -8,20 +8,20 @@ class TratadorComandosCMD():
         self.gerenciador_diretorios = GerenciadorDiretorios()
     
     def ls(self, comando: str, diretorio_atual) -> List[Union[Diretorio, Arquivo]]:
-        comando = comando.split(' ')
+        comando = comando.strip().split(' ')
         if(comando[0] == 'ls'):
             return self.gerenciador_diretorios.lista_diretorio_atual(raiz=diretorio_atual)
         raise Exception("comando invalido.")
 
     def pwd(self, comando: str, diretorios_atual: Diretorio) -> str:
-        comando = comando.split(' ')
+        comando = comando.strip().split(' ')
         if(comando[0].lower() == 'pwd' and len(comando) == 1):
             return self.gerenciador_diretorios.path_absoluto_diretorios_atual(diretorios_atual)
 
         raise Exception("comando invalido.")
     
     def cd(self, comando: str, diretorio_atual: Diretorio) -> Diretorio:
-        comando = comando.split(' ')
+        comando = comando.strip().split(' ')
         
         if(comando[0].lower() == 'cd' and len(comando) == 2):
             return self.gerenciador_diretorios.caminha_para_diretorios(comando[1], diretorio_atual)
@@ -29,18 +29,23 @@ class TratadorComandosCMD():
         raise Exception("comando invalido.")
 
     def mkdir(self, comando: str, diretorio_atual: Diretorio) -> Diretorio:
-        comando = comando.split(' ') 
+        comando = comando.strip().split(' ') 
         if(len(comando) == 2):
-            nome_diretorio = comando[1].replace('\\', '/').split('/')
+            nome_diretorio = comando[1]
             novo_diretorio = Diretorio()
             novo_diretorio.set_nome(nome_diretorio)
-            diretorio_atual.add_diretorio(novo_diretorio)
-            return 
+            diretorio_criado = True
+            if(diretorio_atual != None):
+                if(not diretorio_atual.add_diretorio(novo_diretorio)): 
+                    return diretorio_atual
+            
+            print("diretorio criado!")
+            return novo_diretorio
         
         raise Exception("comando invalido.")
 
     def create(self, comando: str, diretorio_atual: Diretorio):
-        comando = comando.split(" ")
+        comando = comando.strip().split(" ")
         if(len(comando) == 3):
             nome_arquivo = comando[1]
             tamanho_em_blocos_arquivo = comando[2]

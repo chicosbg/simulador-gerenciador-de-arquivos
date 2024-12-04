@@ -11,11 +11,12 @@ class Diretorio(Arquivo):
         for dir in self.sub_diretorios:
             if (dir.nome == diretorio.nome):
                 print("Diretorio presente.") 
-                return
+                return False
 
         diretorio.raiz = self
         
         self.sub_diretorios.append(diretorio)
+        return True
     
     def add_arquivo(self, arquivo):
         for arq in self.arquivos:
