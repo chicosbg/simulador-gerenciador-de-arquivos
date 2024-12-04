@@ -2,11 +2,13 @@ import cmd
 import os
 
 class InterfaceComando(cmd.Cmd):
-    prompt = 'Sistema de Arquivos - SO> '
 
     def __init__(self):
         super().__init__() # Deve-se iniciar a classe mãe (Cmd)
         self.comando = ""
+        self.prompt = 'Sistema de Arquivos - SO []>'
+    def set_diretorio_atual(self, path_dir_atual):
+        self.prompt = f'Sistema de Arquivos - SO [{path_dir_atual}]> '
 
     def do_cd(self, line):
         """ 

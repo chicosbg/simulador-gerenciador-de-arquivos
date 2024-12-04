@@ -9,5 +9,9 @@ if __name__ == '__main__':
     sistema.comando_cmd('mkdir raiz')
 
     while True:
+        interface.set_diretorio_atual(sistema.path_atual())
         interface.cmdloop()
-        sistema.comando_cmd(interface.comando)
+        try:
+            sistema.comando_cmd(interface.comando)
+        except Exception as e:
+            print(f"Erro: {e}")

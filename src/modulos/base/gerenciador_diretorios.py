@@ -52,18 +52,19 @@ class GerenciadorDiretorios():
     def path_absoluto_diretorios_atual(self, diretorio_atual:Diretorio):
         path = []
         dir_atual = diretorio_atual
-        print(diretorio_atual)
+        
         path.append(dir_atual.nome)
         while True:
             if(dir_atual.raiz == None):
                 break
+            
             dir_atual = dir_atual.raiz
             
             path.append(dir_atual.nome)
             
         path.reverse()
         
-        path_str = '/'.join(i for i in path)
+        path_str = '/'.join(path)
         return path_str
     
     def caminha_para_diretorios(self, path: str|List[str], diretorio_atual: Diretorio) -> Diretorio:
