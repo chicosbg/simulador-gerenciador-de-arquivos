@@ -31,10 +31,13 @@ class TratadorComandosCMD():
     def mkdir(self, comando: str, diretorio_atual: Diretorio) -> Diretorio:
         comando = comando.strip().split(' ') 
         if(len(comando) == 2):
-            nome_diretorio = comando[1]
+            path_dir = comando[1].replace('\\', '/').split('/')
+            nome_diretorio = path_dir[-1]
+            path_dir.pop() # remove o nome do diretorio para não dar ruim
+            diretorio_atual = self.gerenciador_diretorios.caminha_para_diretorios(path_dir, diretorio_atual)
+
             novo_diretorio = Diretorio()
             novo_diretorio.set_nome(nome_diretorio)
-            diretorio_criado = True
             if(diretorio_atual != None):
                 if(not diretorio_atual.add_diretorio(novo_diretorio)): 
                     return diretorio_atual

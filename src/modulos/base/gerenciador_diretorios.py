@@ -66,9 +66,10 @@ class GerenciadorDiretorios():
         path_str = '/'.join(i for i in path)
         return path_str
     
-    def caminha_para_diretorios(self, path: str, diretorio_atual: Diretorio) -> Diretorio:
-        path = path.split('/')
-
+    def caminha_para_diretorios(self, path: str|List[str], diretorio_atual: Diretorio) -> Diretorio:
+        if(type(path) == str):
+            path = path.split('/')
+        
         dir_atual = diretorio_atual
         
         for i, p in enumerate(path):    
