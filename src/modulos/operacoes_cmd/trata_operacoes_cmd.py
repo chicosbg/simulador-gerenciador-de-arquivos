@@ -34,6 +34,7 @@ class TratadorComandosCMD():
             path_dir = comando[1].replace('\\', '/').split('/')
             nome_diretorio = path_dir[-1]
             path_dir.pop() # remove o nome do diretorio para não dar ruim
+            
             diretorio_atual = self.gerenciador_diretorios.caminha_para_diretorios(path_dir, diretorio_atual)
 
             novo_diretorio = Diretorio()
