@@ -9,7 +9,7 @@ class SO():
         comando_tratado = comando.strip().split(' ')
         instrucao_digitada = comando_tratado[0]
         if(instrucao_digitada.lower() == 'cd'):
-            dir_atual = self.tratador_comandos.cd(comando, self.diretorios_atual)   
+            dir_atual = self.tratador_comandos.cd(comando, self.diretorios_atual)
             self.diretorios_atual = dir_atual
         
         if(instrucao_digitada.lower() == 'ls'):
@@ -25,6 +25,20 @@ class SO():
         if(instrucao_digitada.lower() == 'mkdir'):
             # self.diretorios_atual = self.tratador_comandos.mkdir(comando, self.diretorios_atual)
             self.tratador_comandos.mkdir(comando, self.diretorios_atual)
+
+        if(instrucao_digitada.lower() == 'touch'):
+            self.tratador_comandos.touch(comando, self.diretorios_atual)
+
+        if(instrucao_digitada.lower() == 'rm'):
+            self.tratador_comandos.rm(comando, self.diretorios_atual)
+        
+        if(instrucao_digitada.lower() == 'open'):
+
+            pass
+
+        if(instrucao_digitada.lower() == 'status'):
+
+            pass
             
     def path_atual(self):
         return f'/{self.tratador_comandos.pwd("pwd", self.diretorios_atual)}'

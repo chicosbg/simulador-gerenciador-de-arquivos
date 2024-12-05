@@ -56,4 +56,39 @@ class TratadorComandosCMD():
             self.gerenciador_diretorios.cria_arquivo(nome_arquivo, tamanho_em_blocos_arquivo, diretorio_atual)
         
         raise Exception("comando invalido.")
+
+    def touch(self, comando: str, diretorio_atual: Diretorio):
+        comando = comando.strip().split(" ")
+        if(len(comando) == 2):
+            nome_arquivo = comando[1]
+            self.gerenciador_diretorios.cria_arquivo(nome_arquivo, 4, diretorio_atual)
+            print("Arquivo criado!")
+            return
+
+        raise Exception("comando invalido.")
+
+    def rm(self, comando: str, diretorio_atual: Diretorio):
+        comando = comando.strip().split(' ') 
+        if(len(comando) == 2):
+            path_dir = comando[1].replace('\\', '/').split('/')
+
+            if path_dir[-1] != '':
+                nome_arquivo = path_dir[-1]
+            else:
+                nome_arquivo = path_dir[-2]
+
+            path_dir.pop()
+            diretorio_atual = self.gerenciador_diretorios.caminha_para_diretorios(path_dir, diretorio_atual)
+
+            if(diretorio_atual != None):
+                for i, p in enumerate(diretorio_atual.sub_diretorios):
+                    if(p.get_nome() == nome_arquivo):
+                        diretorio_atual.sub_diretorios.pop(i)
+                        return
+
+                for i, p in enumerate(diretorio_atual.arquivos):
+                    if(p.nome == nome_arquivo):
+                        diretorio_atual.arquivos.pop(i)
+                        return
         
+            raise Exception("arquivo ou diretório inexistente.")
