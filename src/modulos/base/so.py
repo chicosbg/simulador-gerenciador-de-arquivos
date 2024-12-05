@@ -33,8 +33,7 @@ class SO():
             self.tratador_comandos.rm(comando, self.diretorios_atual)
         
         if(instrucao_digitada.lower() == 'open'):
-
-            pass
+            self.tratador_comandos.open(comando, self.diretorios_atual)
 
         if(instrucao_digitada.lower() == 'status'):
 

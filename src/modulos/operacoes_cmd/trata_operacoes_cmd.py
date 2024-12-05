@@ -2,6 +2,7 @@ from modulos.base.gerenciador_diretorios import GerenciadorDiretorios
 from modulos.models.arquivo import Arquivo
 from modulos.diretorios.diretorio import Diretorio
 from typing import Union, List
+import os
 
 class TratadorComandosCMD():
     def __init__(self) -> None:
@@ -92,3 +93,24 @@ class TratadorComandosCMD():
                         return
         
             raise Exception("arquivo ou diretório inexistente.")
+
+    def open(self, comando:str, diretorio_atual: Diretorio):
+        comando = comando.strip().split(' ') 
+        if(len(comando) == 2):
+            path_dir = comando[1].replace('\\', '/').split('/')
+
+            if path_dir[-1] != '':
+                nome_arquivo = path_dir[-1]
+            else:
+                nome_arquivo = path_dir[-2]
+
+            path_dir.pop()
+            diretorio_atual = self.gerenciador_diretorios.caminha_para_diretorios(path_dir, diretorio_atual)
+
+            if(diretorio_atual != None):
+                for i, p in enumerate(diretorio_atual.arquivos):
+                    if(p.nome == nome_arquivo):
+                        os.system(f"vi {p.ref_arquivo}")
+                        return
+
+            raise Exception("arquivo inexistente.")
