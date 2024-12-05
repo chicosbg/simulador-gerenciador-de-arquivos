@@ -6,7 +6,7 @@ from modulos.base.so import SO
 if __name__ == '__main__':
     sistema = SO()
     interface = InterfaceComando()
-    sistema.comando_cmd('mkdir raiz')
+    sistema.diretorios_atual = sistema.tratador_comandos.mkdir('mkdir raiz', sistema.diretorios_atual)
 
     while True:
         interface.set_diretorio_atual(sistema.path_atual())

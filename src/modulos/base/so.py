@@ -23,7 +23,8 @@ class SO():
             print(f'/{self.tratador_comandos.pwd(comando, self.diretorios_atual)}')    
              
         if(instrucao_digitada.lower() == 'mkdir'):
-            self.diretorios_atual = self.tratador_comandos.mkdir(comando, self.diretorios_atual)
+            # self.diretorios_atual = self.tratador_comandos.mkdir(comando, self.diretorios_atual)
+            self.tratador_comandos.mkdir(comando, self.diretorios_atual)
             
     def path_atual(self):
         return f'/{self.tratador_comandos.pwd("pwd", self.diretorios_atual)}'

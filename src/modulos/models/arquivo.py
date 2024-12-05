@@ -9,4 +9,3 @@ class Arquivo():
         self.tamanho_blocos = 0
         self.nome = ""
         self.data_criacao = datetime.now()
-        
