@@ -67,7 +67,6 @@ class InterfaceComando(cmd.Cmd):
             Exibe informações do sistema de arquivos (ex.: tamanho do disco, espaço livre, estrutura hierarquica).
         """
         self.comando = "status"
-        print(self.comando)
         return True
 
     def do_exit(self, line):

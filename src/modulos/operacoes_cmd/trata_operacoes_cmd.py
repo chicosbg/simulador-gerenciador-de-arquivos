@@ -81,14 +81,12 @@ class TratadorComandosCMD():
                 for i, p in enumerate(diretorio_atual.sub_diretorios):
                     if(p.get_nome() == nome_arquivo):
                         diretorio_atual.sub_diretorios.pop(i)
-                        # desalocar do disco
                         return
 
                 for i, p in enumerate(diretorio_atual.arquivos):
                     if(p.nome == nome_arquivo):
                         self.gerenciador_dispositivos.liberar(p.blocos, p.tamanho_blocos)
                         diretorio_atual.arquivos.pop(i)
-                        # desalocar do disco
                         return
         
             raise Exception("arquivo ou diretório inexistente.")
@@ -112,8 +110,35 @@ class TratadorComandosCMD():
                         tamanho_antes = p.tamanho_blocos
                         os.system(f"vi {p.ref_arquivo}")
                         p.atualiza_tamanho()
-                        if tamanho_antes < p.tamanho_blocos:
-                            self.gerenciador_dispositivos.alocar(p.tamanho_blocos - tamanho_antes)
+                        # if tamanho_antes < p.tamanho_blocos:
+                        #     self.gerenciador_dispositivos.alocar(p.tamanho_blocos - tamanho_antes)
+                        # elif tamanho_antes > p.tamanho_blocos:
+                        #     count = tamanho_antes - p.tamanho_blocos
+                        #     for i in range(count):
+                        #         self.gerenciador_dispositivos.liberar(p.blocos, p.tamanho_blocos)
+                        #         p.blocos = p.blocos.proximo
                         return
 
             raise Exception("arquivo inexistente.")
+
+    def status(self, comando:str):
+        # self.console.log(self.gerenciador_dispositivos.disco.blocos_memoria)
+        print("tamanho do disco (blocos): " + str(self.gerenciador_dispositivos.disco.numero_blocos))
+        print("espaço livre (blocos): " + str(self.gerenciador_dispositivos.disco.numero_blocos_livres))
+
+        print("[", end="")
+        for i, element in enumerate(self.gerenciador_dispositivos.disco.blocos_memoria):
+            if(i == len(self.gerenciador_dispositivos.disco.blocos_memoria) - 1):
+                if(element == -1):
+                    print("-1", end="")
+                else:
+                    print("0", end="")
+            else:
+                if(element == -1):
+                    print("-1, ", end="")
+                else:
+                    print("0, ", end="")
+
+        print("]")
+
+        # print(self.gerenciador_dispositivos.disco.blocos_memoria)

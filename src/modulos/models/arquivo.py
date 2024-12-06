@@ -1,5 +1,6 @@
 from datetime import datetime
 import math
+import os
 
 """
     justificativa da encadeada: achei legal, mas o de indices parece mais interessante ;)

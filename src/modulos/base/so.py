@@ -37,7 +37,7 @@ class SO():
             self.tratador_comandos.open(comando, self.diretorios_atual)
 
         if(instrucao_digitada.lower() == 'status'):
-            pass
+            self.tratador_comandos.status(comando)
             
     def path_atual(self):
         return f'/{self.tratador_comandos.pwd("pwd", self.diretorios_atual)}'
