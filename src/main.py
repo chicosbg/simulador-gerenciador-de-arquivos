@@ -1,10 +1,9 @@
 from modulos.interface_comando.InterfaceComando import InterfaceComando
-from modulos.base.gerenciador_diretorios import GerenciadorDiretorios
 from modulos.base.gerenciador_dispositivo import GerenciadorDispositivo
 from modulos.base.so import SO
 
 if __name__ == '__main__':
-    sistema = SO()
+    sistema = SO(GerenciadorDispositivo())
     interface = InterfaceComando()
     sistema.diretorios_atual = sistema.tratador_comandos.mkdir('mkdir raiz', sistema.diretorios_atual)
 

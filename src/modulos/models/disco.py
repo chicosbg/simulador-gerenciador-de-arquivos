@@ -21,6 +21,7 @@ class Disco():
 
     def busca_bloco(self, bloco: Bloco):
         for p, b in enumerate(self.blocos_memoria):
+            if b == -1: continue
             if(b.id == bloco.id): 
                 return (bloco, p)
         

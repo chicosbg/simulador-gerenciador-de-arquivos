@@ -1,13 +1,15 @@
 from modulos.base.gerenciador_diretorios import GerenciadorDiretorios
+from modulos.base.gerenciador_dispositivo import GerenciadorDispositivo
 from modulos.models.arquivo import Arquivo
 from modulos.diretorios.diretorio import Diretorio
 from typing import Union, List
 import os
 
 class TratadorComandosCMD():
-    def __init__(self) -> None:
-        self.gerenciador_diretorios = GerenciadorDiretorios()
-    
+    def __init__(self, gerenciador_dispositivo: GerenciadorDispositivo) -> None:
+        self.gerenciador_diretorios = GerenciadorDiretorios(gerenciador_dispositivo)
+        self.gerenciador_dispositivos = gerenciador_dispositivo
+        
     def ls(self, comando: str, diretorio_atual: Diretorio) -> List[Union[Diretorio, Arquivo]]:
         comando = comando.strip().split(' ')
         if(comando[0] == 'ls'):
@@ -51,15 +53,6 @@ class TratadorComandosCMD():
         
         raise Exception("comando invalido.")
 
-    def create(self, comando: str, diretorio_atual: Diretorio):
-        comando = comando.strip().split(" ")
-        if(len(comando) == 3):
-            nome_arquivo = comando[1]
-            tamanho_em_blocos_arquivo = comando[2]
-            self.gerenciador_diretorios.cria_arquivo(nome_arquivo, tamanho_em_blocos_arquivo, diretorio_atual)
-        
-        raise Exception("comando invalido.")
-
     def touch(self, comando: str, diretorio_atual: Diretorio):
         comando = comando.strip().split(" ")
         if(len(comando) == 2):
@@ -91,6 +84,8 @@ class TratadorComandosCMD():
 
                 for i, p in enumerate(diretorio_atual.arquivos):
                     if(p.nome == nome_arquivo):
+                        self.gerenciador_dispositivos.liberar(p.blocos, p.tamanho_blocos)
+                        print(self.gerenciador_dispositivos.disco.blocos_memoria)
                         diretorio_atual.arquivos.pop(i)
                         return
         

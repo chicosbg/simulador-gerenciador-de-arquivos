@@ -2,8 +2,8 @@ from modulos.models.disco import Disco
 from modulos.models.bloco import Bloco
 
 class GerenciadorDispositivo():
-    def __init__(self, disco: Disco):
-        self.disco = disco
+    def __init__(self):
+        self.disco = Disco(150)
         
     def alocar(self, numero_blocos):
         if(numero_blocos > self.disco.numero_blocos_livres):
@@ -11,16 +11,24 @@ class GerenciadorDispositivo():
 
         self.disco.numero_blocos_livres = self.disco.numero_blocos_livres - numero_blocos
 
+        primeiro_bloco = None
         bloco_atual = None
         for b in range(numero_blocos-1):
             bloco = Bloco()
             
             if(bloco_atual):
                 bloco_atual.proximo = bloco
+                
+            if(primeiro_bloco == None):
+                primeiro_bloco = bloco    
 
             bloco_atual = bloco
             
-            self.disco.add_bloco(bloco)
+            
+            if(not self.disco.add_bloco(bloco)):
+                raise Exception("Erro ao alocar.")
+            
+        return primeiro_bloco
 
     def liberar(self, bloco_inicial: Bloco, numero_blocos: int):
         if(self.disco.busca_bloco(bloco_inicial) == None):
@@ -35,4 +43,4 @@ class GerenciadorDispositivo():
             self.disco.remove_bloco(bloco_atual)
             bloco_atual = bloco_atual.proximo
             
-        print("Bloco removido da memoria")
+        print("Blocos removidos da memoria")

@@ -1,9 +1,9 @@
 from modulos.operacoes_cmd.trata_operacoes_cmd import TratadorComandosCMD
 
 class SO():
-    def __init__(self):
+    def __init__(self, gerenciador_dispositivo):
         self.diretorios_atual = None
-        self.tratador_comandos = TratadorComandosCMD()
+        self.tratador_comandos = TratadorComandosCMD(gerenciador_dispositivo)
         
     def comando_cmd(self, comando: str):
         comando_tratado = comando.strip().split(' ')
@@ -36,7 +36,6 @@ class SO():
             self.tratador_comandos.open(comando, self.diretorios_atual)
 
         if(instrucao_digitada.lower() == 'status'):
-
             pass
             
     def path_atual(self):
