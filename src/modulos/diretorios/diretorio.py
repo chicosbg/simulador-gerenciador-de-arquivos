@@ -26,7 +26,7 @@ class Diretorio(Arquivo):
                 
         bloco = gerenciador_dispositivo.alocar(arquivo.tamanho_blocos)
         
-        self.console.log(gerenciador_dispositivo.disco.blocos_memoria)
+        # self.console.log(gerenciador_dispositivo.disco.blocos_memoria)
         
         if bloco == None:
             raise Exception("Erro ao alocar blocos.")

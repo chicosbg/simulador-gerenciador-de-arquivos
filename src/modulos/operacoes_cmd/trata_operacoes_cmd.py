@@ -58,7 +58,7 @@ class TratadorComandosCMD():
         comando = comando.strip().split(" ")
         if(len(comando) == 2):
             nome_arquivo = comando[1]
-            self.gerenciador_diretorios.cria_arquivo(nome_arquivo, 4, diretorio_atual)
+            self.gerenciador_diretorios.cria_arquivo(nome_arquivo, 1, diretorio_atual)
             self.console.log("Arquivo criado!")
             return
 
@@ -81,12 +81,14 @@ class TratadorComandosCMD():
                 for i, p in enumerate(diretorio_atual.sub_diretorios):
                     if(p.get_nome() == nome_arquivo):
                         diretorio_atual.sub_diretorios.pop(i)
+                        # desalocar do disco
                         return
 
                 for i, p in enumerate(diretorio_atual.arquivos):
                     if(p.nome == nome_arquivo):
                         self.gerenciador_dispositivos.liberar(p.blocos, p.tamanho_blocos)
                         diretorio_atual.arquivos.pop(i)
+                        # desalocar do disco
                         return
         
             raise Exception("arquivo ou diretório inexistente.")
@@ -107,7 +109,11 @@ class TratadorComandosCMD():
             if(diretorio_atual != None):
                 for i, p in enumerate(diretorio_atual.arquivos):
                     if(p.nome == nome_arquivo):
+                        tamanho_antes = p.tamanho_blocos
                         os.system(f"vi {p.ref_arquivo}")
+                        p.atualiza_tamanho()
+                        if tamanho_antes < p.tamanho_blocos:
+                            self.gerenciador_dispositivos.alocar(p.tamanho_blocos - tamanho_antes)
                         return
 
             raise Exception("arquivo inexistente.")

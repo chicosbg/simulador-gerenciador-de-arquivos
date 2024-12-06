@@ -13,7 +13,7 @@ class GerenciadorDispositivo():
 
         primeiro_bloco = None
         bloco_atual = None
-        for b in range(numero_blocos-1):
+        for b in range(numero_blocos):
             bloco = Bloco()
             
             if(bloco_atual):

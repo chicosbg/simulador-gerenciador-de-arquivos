@@ -22,7 +22,7 @@ class GerenciadorDiretorios():
         
         if(raiz):
             raiz.add_diretorio(diretorio=novo_diretorio)
-        print(self.gerenciador_dispositivo.disco.blocos_memoria)
+        # print(self.gerenciador_dispositivo.disco.blocos_memoria)
         return novo_diretorio
     
     def lista_diretorio_atual(self, raiz: Diretorio):

@@ -1,4 +1,5 @@
 from datetime import datetime
+import math
 
 """
     justificativa da encadeada: achei legal, mas o de indices parece mais interessante ;)
@@ -19,3 +20,6 @@ class Arquivo():
             print(str(e))
 
         Arquivo.id_estatico += 1
+
+    def atualiza_tamanho(self):
+        self.tamanho_blocos = math.ceil((os.stat(self.ref_arquivo).st_size) / 512)

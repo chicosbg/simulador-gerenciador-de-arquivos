@@ -1,4 +1,5 @@
 from modulos.models.bloco import Bloco
+
 class Disco():
     def __init__(self, numero_blocos):
         self.numero_blocos = numero_blocos
@@ -14,6 +15,7 @@ class Disco():
                 break
         
         if (posicao_livre == -1): 
+            print("esta falso")
             return False
         
         self.blocos_memoria.insert(posicao_livre, bloco)
@@ -34,5 +36,3 @@ class Disco():
         bloco.deletado = True # {nao sei para que vai ser usado isso} 
         
         self.blocos_memoria[posicao] = -1
-        
-        

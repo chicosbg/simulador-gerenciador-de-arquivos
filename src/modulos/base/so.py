@@ -14,18 +14,17 @@ class SO():
         
         if(instrucao_digitada.lower() == 'ls'):
             dirs, arqs = self.tratador_comandos.ls(comando, self.diretorios_atual)    
-            self.console.log('.')
-            self.console.log('..')
+            print('.')
+            print('..')
             for diretorio in dirs:
-                self.console.log(f"[green bold]{diretorio.nome}[/green bold]")
+                print(f"\033[1;32m{diretorio.nome}\033[0m")
             for arquivo in arqs:
-                self.console.log(arquivo.nome) 
+                print(arquivo.nome) 
             
         if(instrucao_digitada.lower() == 'pwd'):
             self.console.log(f'/{self.tratador_comandos.pwd(comando, self.diretorios_atual)}')    
              
         if(instrucao_digitada.lower() == 'mkdir'):
-            # self.diretorios_atual = self.tratador_comandos.mkdir(comando, self.diretorios_atual)
             self.tratador_comandos.mkdir(comando, self.diretorios_atual)
 
         if(instrucao_digitada.lower() == 'touch'):

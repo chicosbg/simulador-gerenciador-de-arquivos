@@ -18,7 +18,6 @@ class InterfaceComando(cmd.Cmd):
             Muda Diretório.
         """
         self.comando = f"cd {line}"
-        print(self.comando)
         return True
     
     def do_mkdir(self, line):
@@ -26,7 +25,6 @@ class InterfaceComando(cmd.Cmd):
             Cria Diretório.
         """
         self.comando = f"mkdir {line}"
-        print(self.comando)
         return True
 
     def do_ls(self, line):
@@ -34,7 +32,6 @@ class InterfaceComando(cmd.Cmd):
             Lista Diretórios.
         """
         self.comando = f"ls {line}"
-        print(self.comando)
         return True
 
     def do_pwd(self, line):
@@ -42,7 +39,6 @@ class InterfaceComando(cmd.Cmd):
             Informa caminho atual.
         """
         self.comando = f"pwd {line}"
-        print(self.comando)
         return True
 
     def do_touch(self, line):
@@ -50,7 +46,6 @@ class InterfaceComando(cmd.Cmd):
             Cria arquivo com qualquer extensão
         """
         self.comando = f"touch {line}"
-        print(self.comando)
         return True
 
     def do_rm(self, line):
@@ -58,7 +53,6 @@ class InterfaceComando(cmd.Cmd):
             Deleta arquivo ou diretório (não é preciso -r).
         """
         self.comando = f"rm {line}"
-        print(self.comando)
         return True
 
     def do_open(self, line):
@@ -66,7 +60,6 @@ class InterfaceComando(cmd.Cmd):
             Abre um arquivo para visualização e edição.
         """
         self.comando = f"open {line}"
-        print(self.comando)
         return True
 
     def do_status(self, line):
