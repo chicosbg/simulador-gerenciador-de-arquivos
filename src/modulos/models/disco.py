@@ -13,7 +13,7 @@ class Disco():
                 posicao_livre = i
                 break
         
-        if (posicao_livre -1): 
+        if (posicao_livre == -1): 
             return False
         
         self.blocos_memoria.insert(posicao_livre, bloco)

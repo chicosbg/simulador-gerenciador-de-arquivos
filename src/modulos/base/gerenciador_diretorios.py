@@ -18,7 +18,6 @@ class GerenciadorDiretorios():
         novo_diretorio = Diretorio()
         novo_diretorio.nome = nome
         novo_diretorio.raiz = raiz
-        # self.path_amibiente = "../ambiente/"
         
         if(raiz):
             raiz.add_diretorio(diretorio=novo_diretorio)

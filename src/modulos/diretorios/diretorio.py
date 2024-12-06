@@ -21,8 +21,7 @@ class Diretorio(Arquivo):
     def add_arquivo(self, arquivo):
         for arq in self.arquivos:
             if (arq.nome == arquivo.nome):
-                print("Arquivo presente.") 
-                return
+                raise "Arquivo presente." 
                 
         self.arquivos.append(arquivo)    
     

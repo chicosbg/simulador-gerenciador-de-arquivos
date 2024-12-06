@@ -11,13 +11,15 @@ class GerenciadorDispositivo():
 
         self.disco.numero_blocos_livres = self.disco.numero_blocos_livres - numero_blocos
 
-        bloco_anterior = None
-        for b in range(numero_blocos):
+        bloco_atual = None
+        for b in range(numero_blocos-1):
             bloco = Bloco()
             
-            if(bloco_anterior):
-                bloco.proximo = bloco_anterior
+            if(bloco_atual):
+                bloco_atual.proximo = bloco
 
+            bloco_atual = bloco
+            
             self.disco.add_bloco(bloco)
 
     def liberar(self, bloco_inicial: Bloco, numero_blocos: int):
