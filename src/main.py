@@ -2,10 +2,7 @@ from modulos.interface_comando.InterfaceComando import InterfaceComando
 from modulos.base.gerenciador_dispositivo import GerenciadorDispositivo
 from modulos.base.so import SO
 from rich.console import Console
-from rich.panel import Panel
-import rich
 import time
-import logging
 import signal
 
 def handle_sigint(signum, frame):
