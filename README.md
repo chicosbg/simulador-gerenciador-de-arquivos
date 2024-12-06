@@ -44,17 +44,32 @@ A cada passo da simulação, o programa realiza as seguintes operações:
 
 A arquitetura do simulador é composta pelas seguintes classes: ``Interrupcao``, ``OS`` e ``Processo``, cada uma com responsabilidades específicas que contribuem para o funcionamento do programa.
 
-## Interrupcao
-
-Classe responsável por modelar as interrupções do sistema. Ela define o dispositivo que gerou a interrupção, sua prioridade na fila de interrupções, o tipo de interrupção e o ocorrido.
-
+Classes fundamentais e que e que dão o suporte inicial para o funcionamento do sistema
+  -- base --
+## Gerenciador de Diretórios
+## Gerenciador de Dispositivos
 ## OS
 
-A classe ``OS`` gerencia o controle e o fluxo de execução do sistema operacional. Ela é responsável por tratar as interrupções, gerenciar a fila de interrupções e salvar o contexto do processo afetado.
+Classe que abstrai o funcionamento dos diretórios no sistema
+-- Diretorios --
+## Diretorio
 
-## Processo
+Classe responsável por implementar o interfaceamento de linha de comnado com o usuario tal qual é feito em um terminal linux
+-- Interface de Comando --
+## Interface de Comando
 
-A classe ``Processo`` modela os processos sendo simulados. Ela gerencia o ciclo de vida de cada processo, incluindo sua execução, interrupção e retomada.
+Classes que utilizam das classes bases para o seu funcionamento
+-- Models --
+## Arquivo
+## Bloco
+## Disco
+
+Responsável por executar de forma lógica os comandos digitados no terminal pelo usuário
+-- Operações --
+## Tratador de Operações
+
+
+Classe responsável por modelar as interrupções do sistema. Ela define o dispositivo que gerou a interrupção, sua prioridade na fila de interrupções, o tipo de interrupção e o ocorrido.
 
 # Cenários de Testes
 
