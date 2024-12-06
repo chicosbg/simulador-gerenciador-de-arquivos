@@ -29,17 +29,6 @@ Acesse a pasta do projeto e execute o arquivo main.py:
 python3 src/main.py
 ```
 
-# Funcionamento do Simulador
-
-A cada passo da simulação, o programa realiza as seguintes operações:
-
-+ Cria o processo principal (que estará executando sempre no programa).
-+ Enquanto executa, verifica se ocorreu uma interrupção (há 15% de chance de ocorrer uma interrupção).
-+ Caso ocorra uma interrupção, coloca a interrupção na fila de interrupções (de acordo com a prioridade).
-+ Salva o contexto do processo principal e o interrompe.
-+ Trata as interrupções da fila (é possível que cheguem novas interrupções).
-+ Retoma o contexto do processo principal e continua a execução.
-
 # Arquitetura do Sistema
 
 A arquitetura do simulador é composta pelos seguintes contextos: ``Base``, ``Diretórios``, ``Interface de comando``, ``Models`` e ``Operações`` cada uma com responsabilidades específicas que contribuem para o funcionamento do programa.
@@ -92,52 +81,28 @@ Classe que representa o disco, possuindo como atributos: numero de blocos totais
 
 Esse contexto possui apenas a classe TratadosComandosCMD que é uma classe chamada pelo SO para tratar todas as funções geradas a partir dos comandos digitados pelo usuário ou seja: ``ls``, ``pwd``, ``cd``, ``mkdir``, ``touch``, ``rm``, ``open`` e ``status``
 
-
-Classes fundamentais e que e que dão o suporte inicial para o funcionamento do sistema
-  -- base --
-## Gerenciador de Diretórios
-## Gerenciador de Dispositivos
-## OS
-
-Classe que abstrai o funcionamento dos diretórios no sistema
--- Diretorios --
-## Diretorio
-
-Classe responsável por implementar o interfaceamento de linha de comnado com o usuario tal qual é feito em um terminal linux
--- Interface de Comando --
-## Interface de Comando
-
-Classes que utilizam das classes bases para o seu funcionamento
--- Models --
-## Arquivo
-## Bloco
-## Disco
-
-Responsável por executar de forma lógica os comandos digitados no terminal pelo usuário
--- Operações --
-## Tratador de Operações
-
-
 # Cenários de Testes
 
-O simulador possui alguns cenário possíveis durante a sua execução:
+## Criação de Arquivos e Diretórios:
 
-## Execução Contínua do Processo
+Criação de arquivos e diretórios em diferentes níveis da hierarquia, verificando os nomes permitidos.
 
-A execução normal do processo principal sem interrupções. Nesse caso o processo é executado continuamente, incrementando e simulando os valores de tempo, pc e ponteiro para pilha.
+## Leitura de Arquivos
 
-## Geração de Interrupções
+O conteúdo armazenado pode ser lido corretamente.
 
-A chance de gerar uma interrupção é de 15%, nesse caso ocorrem as seguintes ações:
+## Escrita de Arquivos:
 
-+ A interrupção é registrada no log.
-+ O contexto do processo é salvo.
-+ A interrupção é adicionada na fila de interrupções.
+Os dados podem ser gravados.
 
-## Tratamento de Interrupções
+## Exclusão de Arquivos/Diretórios:
 
-As interrupções na fila são tratadas pelo sistema operacional. Quando uma nova interrupção chega, é possível que ela possua uma prioridade maior do que uma interrupção que esteja sendo tratada no mesmo instante. Nesse caso, o sistema operacional passa o tratamento para a interrupção de maior prioridade.
+É possível remover arquivos e diretórios, estando vazios ou não
 
-## Retomada do Processo Principal
+## Utilização de Blocos:
 
-O processo principal é retomado após o tratamento das interrupções. Isso ocorre quando a fila de interrupções está totalmente vazia, nesse caso os valores de tempo, pc e ponteiro da pilha do processo principal são retomados.
+O espaço em disco pode ser alocado e liberado corretamente durante a criação e remoção de um arquivo.
+
+## Esgotamento do Espaço em Disco:
+
+Não é possível criar mais arquivos se o espaço em disco estiver cheio.
