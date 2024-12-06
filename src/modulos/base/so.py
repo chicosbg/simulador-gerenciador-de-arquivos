@@ -1,10 +1,10 @@
 from modulos.operacoes_cmd.trata_operacoes_cmd import TratadorComandosCMD
 
 class SO():
-    def __init__(self, gerenciador_dispositivo):
+    def __init__(self, gerenciador_dispositivo, console):
         self.diretorios_atual = None
-        self.tratador_comandos = TratadorComandosCMD(gerenciador_dispositivo)
-        
+        self.tratador_comandos = TratadorComandosCMD(gerenciador_dispositivo, console)
+        self.console = console
     def comando_cmd(self, comando: str):
         comando_tratado = comando.strip().split(' ')
         instrucao_digitada = comando_tratado[0]
@@ -14,13 +14,13 @@ class SO():
         
         if(instrucao_digitada.lower() == 'ls'):
             dirs = self.tratador_comandos.ls(comando, self.diretorios_atual)    
-            print('.')
-            print('..')
+            self.console.log('.')
+            self.console.log('..')
             for diretorio in dirs:
-                print(diretorio.nome) 
+                self.console.log(diretorio.nome) 
             
         if(instrucao_digitada.lower() == 'pwd'):
-            print(f'/{self.tratador_comandos.pwd(comando, self.diretorios_atual)}')    
+            self.console.log(f'/{self.tratador_comandos.pwd(comando, self.diretorios_atual)}')    
              
         if(instrucao_digitada.lower() == 'mkdir'):
             # self.diretorios_atual = self.tratador_comandos.mkdir(comando, self.diretorios_atual)

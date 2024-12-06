@@ -6,9 +6,10 @@ from typing import Union, List
 import os
 
 class TratadorComandosCMD():
-    def __init__(self, gerenciador_dispositivo: GerenciadorDispositivo) -> None:
-        self.gerenciador_diretorios = GerenciadorDiretorios(gerenciador_dispositivo)
+    def __init__(self, gerenciador_dispositivo: GerenciadorDispositivo, console) -> None:
+        self.gerenciador_diretorios = GerenciadorDiretorios(gerenciador_dispositivo, console)
         self.gerenciador_dispositivos = gerenciador_dispositivo
+        self.console = console
         
     def ls(self, comando: str, diretorio_atual: Diretorio) -> List[Union[Diretorio, Arquivo]]:
         comando = comando.strip().split(' ')
@@ -42,13 +43,13 @@ class TratadorComandosCMD():
             
             diretorio_atual = self.gerenciador_diretorios.caminha_para_diretorios(path_dir, diretorio_atual)
 
-            novo_diretorio = Diretorio()
+            novo_diretorio = Diretorio(self.console)
             novo_diretorio.set_nome(nome_diretorio)
             if(diretorio_atual != None):
                 if(not diretorio_atual.add_diretorio(novo_diretorio)): 
                     return diretorio_atual
             
-            print("diretorio criado!")
+            self.console.log("diretorio criado!")
             return novo_diretorio
         
         raise Exception("comando invalido.")
@@ -58,7 +59,7 @@ class TratadorComandosCMD():
         if(len(comando) == 2):
             nome_arquivo = comando[1]
             self.gerenciador_diretorios.cria_arquivo(nome_arquivo, 4, diretorio_atual)
-            print("Arquivo criado!")
+            self.console.log("Arquivo criado!")
             return
 
         raise Exception("comando invalido.")

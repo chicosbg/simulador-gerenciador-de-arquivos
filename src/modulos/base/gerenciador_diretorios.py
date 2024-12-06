@@ -4,9 +4,9 @@ from modulos.base.gerenciador_dispositivo import GerenciadorDispositivo
 from typing import List
 
 class GerenciadorDiretorios():
-    def __init__(self, gerenciador_dispositivo: GerenciadorDispositivo) -> None:
+    def __init__(self, gerenciador_dispositivo: GerenciadorDispositivo, console) -> None:
         self.gerenciador_dispositivo = gerenciador_dispositivo
-         
+        self.console = console
     
     def cria_arquivo(self, nome: str, tamanho_blocos: int, diretorio_atual: Diretorio):
         novo_arquivo = Arquivo()
@@ -16,7 +16,7 @@ class GerenciadorDiretorios():
         diretorio_atual.add_arquivo(novo_arquivo, self.gerenciador_dispositivo)
     
     def cria_diretorios(self, nome, raiz: Diretorio|None = None):
-        novo_diretorio = Diretorio()
+        novo_diretorio = Diretorio(self.console)
         novo_diretorio.nome = nome
         novo_diretorio.raiz = raiz
         

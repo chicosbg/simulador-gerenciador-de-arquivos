@@ -1,12 +1,14 @@
 import cmd
 import os
+import time
 
 class InterfaceComando(cmd.Cmd):
 
-    def __init__(self):
+    def __init__(self, console):
         super().__init__() # Deve-se iniciar a classe mãe (Cmd)
         self.comando = ""
         self.prompt = 'Sistema de Arquivos - SO []>'
+        self.console = console
 
     def set_diretorio_atual(self, path_dir_atual):
         self.prompt = f'Sistema de Arquivos - SO [{path_dir_atual}]> '
@@ -79,6 +81,11 @@ class InterfaceComando(cmd.Cmd):
         """
             Encerra simulador.
         """
+        self.console.log("\nEncerrando sistema...")
+        a = self.console.export_text(clear=True, styles=False)
+        
+        with open(f"./logs/log{time.time().as_integer_ratio()[0]}.txt", "w", encoding="UTF-8") as file:
+             file.write(a)
         exit()
     
     def do_clear(self, line):
