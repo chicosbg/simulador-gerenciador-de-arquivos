@@ -77,9 +77,11 @@ class TratadorComandosCMD():
             path_dir.pop()
             diretorio_atual = self.gerenciador_diretorios.caminha_para_diretorios(path_dir, diretorio_atual)
 
-            if(diretorio_atual != None):
+            if(diretorio_atual != None):                    
                 for i, p in enumerate(diretorio_atual.sub_diretorios):
                     if(p.get_nome() == nome_arquivo):
+                        if(len(p.sub_diretorios) != 0 and len(p.arquivos) != 0):
+                            raise Exception("Diretorio não vazio")
                         diretorio_atual.sub_diretorios.pop(i)
                         return
 
@@ -110,13 +112,21 @@ class TratadorComandosCMD():
                         tamanho_antes = p.tamanho_blocos
                         os.system(f"vi {p.ref_arquivo}")
                         p.atualiza_tamanho()
-                        # if tamanho_antes < p.tamanho_blocos:
-                        #     self.gerenciador_dispositivos.alocar(p.tamanho_blocos - tamanho_antes)
-                        # elif tamanho_antes > p.tamanho_blocos:
-                        #     count = tamanho_antes - p.tamanho_blocos
-                        #     for i in range(count):
-                        #         self.gerenciador_dispositivos.liberar(p.blocos, p.tamanho_blocos)
-                        #         p.blocos = p.blocos.proximo
+                        if tamanho_antes < p.tamanho_blocos:
+                            bloco_novo = self.gerenciador_dispositivos.alocar(p.tamanho_blocos - tamanho_antes)
+                            bloco_aux = p.blocos.proximo 
+                            anterior_aux = p.blocos
+                            while(True):
+                                if(bloco_aux == None):
+                                    anterior_aux.proximo = bloco_novo
+                                    break
+                                bloco_aux = bloco_aux.proximo
+
+                        elif tamanho_antes > p.tamanho_blocos:
+                            count = tamanho_antes - p.tamanho_blocos
+                            for i in range(count):
+                                self.gerenciador_dispositivos.liberar(p.blocos, p.tamanho_blocos)
+                                p.blocos = p.blocos.proximo
                         return
 
             raise Exception("arquivo inexistente.")
