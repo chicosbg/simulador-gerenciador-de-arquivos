@@ -85,7 +85,6 @@ class TratadorComandosCMD():
                 for i, p in enumerate(diretorio_atual.arquivos):
                     if(p.nome == nome_arquivo):
                         self.gerenciador_dispositivos.liberar(p.blocos, p.tamanho_blocos)
-                        print(self.gerenciador_dispositivos.disco.blocos_memoria)
                         diretorio_atual.arquivos.pop(i)
                         return
         
