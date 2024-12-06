@@ -26,10 +26,11 @@ class GerenciadorDiretorios():
         return novo_diretorio
     
     def lista_diretorio_atual(self, raiz: Diretorio):
-        diretorios_e_arquivos = []
-        diretorios_e_arquivos.extend(raiz.sub_diretorios)
-        diretorios_e_arquivos.extend(raiz.arquivos)
-        return diretorios_e_arquivos # retorna todos os diretorios e arquivos
+        diretorios = []
+        arquivos = []
+        diretorios.extend(raiz.sub_diretorios)
+        arquivos.extend(raiz.arquivos)
+        return (diretorios, arquivos) # retorna todos os diretorios e arquivos
     
     def path_absoluto_diretorios_atual(self, diretorio_atual:Diretorio):
         path = []

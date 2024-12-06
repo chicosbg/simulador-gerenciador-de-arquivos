@@ -13,11 +13,13 @@ class SO():
             self.diretorios_atual = dir_atual
         
         if(instrucao_digitada.lower() == 'ls'):
-            dirs = self.tratador_comandos.ls(comando, self.diretorios_atual)    
+            dirs, arqs = self.tratador_comandos.ls(comando, self.diretorios_atual)    
             self.console.log('.')
             self.console.log('..')
             for diretorio in dirs:
-                self.console.log(diretorio.nome) 
+                self.console.log(f"[green bold]{diretorio.nome}[/green bold]")
+            for arquivo in arqs:
+                self.console.log(arquivo.nome) 
             
         if(instrucao_digitada.lower() == 'pwd'):
             self.console.log(f'/{self.tratador_comandos.pwd(comando, self.diretorios_atual)}')    

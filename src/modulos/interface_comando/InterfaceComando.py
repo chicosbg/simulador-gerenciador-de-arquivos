@@ -7,11 +7,11 @@ class InterfaceComando(cmd.Cmd):
     def __init__(self, console):
         super().__init__() # Deve-se iniciar a classe mãe (Cmd)
         self.comando = ""
-        self.prompt = 'Sistema de Arquivos - SO []>'
+        self.prompt = '\033[1;34mSistema de Arquivos - SO []>\033[0m'
         self.console = console
 
     def set_diretorio_atual(self, path_dir_atual):
-        self.prompt = f'Sistema de Arquivos - SO [{path_dir_atual}]> '
+        self.prompt = f'\033[1;34mSistema de Arquivos - SO [{path_dir_atual}]>\033[0m '
 
     def do_cd(self, line):
         """ 
