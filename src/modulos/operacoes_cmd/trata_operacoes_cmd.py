@@ -8,9 +8,11 @@ class TratadorComandosCMD():
     def __init__(self) -> None:
         self.gerenciador_diretorios = GerenciadorDiretorios()
     
-    def ls(self, comando: str, diretorio_atual) -> List[Union[Diretorio, Arquivo]]:
+    def ls(self, comando: str, diretorio_atual: Diretorio) -> List[Union[Diretorio, Arquivo]]:
         comando = comando.strip().split(' ')
         if(comando[0] == 'ls'):
+            if(len(comando) == 2):
+                diretorio_atual = self.gerenciador_diretorios.caminha_para_diretorios(comando[1], diretorio_atual)
             return self.gerenciador_diretorios.lista_diretorio_atual(raiz=diretorio_atual)
         raise Exception("comando invalido.")
 
