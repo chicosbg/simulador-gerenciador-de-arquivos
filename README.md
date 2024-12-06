@@ -42,7 +42,9 @@ A cada passo da simulação, o programa realiza as seguintes operações:
 
 # Arquitetura do Sistema
 
-A arquitetura do simulador é composta pelas seguintes classes: ``Interrupcao``, ``OS`` e ``Processo``, cada uma com responsabilidades específicas que contribuem para o funcionamento do programa.
+A arquitetura do simulador é composta pelos seguintes contextos: ``Base``, ``Diretórios``, ``Interface de comando``, ``Models`` e ``Operações`` cada uma com responsabilidades específicas que contribuem para o funcionamento do programa.
+
+### ola
 
 Classes fundamentais e que e que dão o suporte inicial para o funcionamento do sistema
   -- base --
@@ -68,8 +70,6 @@ Responsável por executar de forma lógica os comandos digitados no terminal pel
 -- Operações --
 ## Tratador de Operações
 
-
-Classe responsável por modelar as interrupções do sistema. Ela define o dispositivo que gerou a interrupção, sua prioridade na fila de interrupções, o tipo de interrupção e o ocorrido.
 
 # Cenários de Testes
 
