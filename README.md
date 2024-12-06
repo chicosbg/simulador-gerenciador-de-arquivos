@@ -10,12 +10,12 @@ O disco é divido em unidades gerenciaveis (blocos), que armazenam os arquivos e
 
 # Pré-requisitos e instalação
 
-O sistema é desenvolvido na linguagem __python__, que pode ser feito o download [aqui](https://www.python.org/downloads/). O simulador pode ser visualizado [aqui](https://github.com/Y4ngfr/Interrupt-simulator)
+O sistema é desenvolvido na linguagem __python__, que pode ser feito o download [aqui](https://www.python.org/downloads/). O simulador pode ser visualizado [aqui](https://github.com/chicosbg/simulador-gerenciador-de-arquivos.git)
 
 Primeiramente deve ser clonado o repositório do projeto com o comando:
 
 ```$
-git clone https://github.com/Y4ngfr/Interrupt-simulator.git
+git clone https://github.com/chicosbg/simulador-gerenciador-de-arquivos.git
 ```
 
 Com repositório clonado instale as dependências (é obrigatório o pacote estar instalado):
