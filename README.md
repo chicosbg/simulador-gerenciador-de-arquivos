@@ -1,15 +1,12 @@
 # Sobre
 
-O **Interrupt-simulator** é um simulador de e/s com interrupções em um sistema operacional. A entrada/saída com interrupções é um mecanismo utilizado em sistemas operacionais para gerenciar dispositivos de E/S de forma eficiente, evitando que o processador fique ocioso aguardando a conclusão de operações de entrada ou saída.
+O **Gerenciador de Arquivos** é um simulador do funcionamento de um sistema de arquivos em um sistema operacional. Um sistema de arquivos é uma camada de software que organiza, gerencia e armazena dados em dispositivos de armazenamento, como discos rígidos, SSDs ou pen drives.
 
-O processador solicita uma operação de E/S (como leitura ou gravação) para um dispositivo.
-Em vez de esperar o dispositivo concluir a operação, o processador continua executando outras tarefas. Quando o dispositivo finaliza a operação de E/S, ele gera uma interrupção que notifica o processador. O processador pausa momentaneamente sua tarefa atual, trata a interrupção (processa os dados ou confirma o término da operação) e depois retorna à tarefa anterior.
+O disco é divido em unidades gerenciaveis (blocos), que armazenam os arquivos e diretórios em uma hierarquia acessível. O sistema de arquivos então rastreia esses blocos, que podem estar livres ou ocupados no disco, e fornece um método uniforme para ler e gravar dados. 
 
-Esse processo garante:
-+ Eficiência.
-+ Resposta Rápida.
-+ Permite multitarefa.
-
++ Evita diperdício.
++ Garante uso eficiente do dispositivo.
++ Garante compatibilidade para vários dispositivos.
 
 # Pré-requisitos e instalação
 
