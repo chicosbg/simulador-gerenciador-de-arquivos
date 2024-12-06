@@ -5,6 +5,7 @@ class SO():
         self.diretorios_atual = None
         self.tratador_comandos = TratadorComandosCMD(gerenciador_dispositivo, console)
         self.console = console
+        
     def comando_cmd(self, comando: str):
         comando_tratado = comando.strip().split(' ')
         instrucao_digitada = comando_tratado[0]
